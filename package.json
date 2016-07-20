@@ -1,0 +1,28 @@
+{
+    "name": "book.jirengu.com-fe.com",
+    "version": "1.0.0",
+    "description": "饥人谷前端学习指南 =======",
+    "main": "gulpfile.js",
+    "dependencies": {
+        "gitbook-plugin-multipart": "^0.3.0",
+        "gulp-shell": "^0.5.1",
+        "gitbook-plugin-toggle-chapters": "^0.0.3",
+        "gulp": "^3.9.0",
+        "requirejs": "^2.1.22"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "build": "echo \"a\"",
+        "upload": "gitbook build & cd _book & git add . & git commit -am \"ok\" & git push origin master "
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jirengu/book.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/jirengu/book/issues"
+    },
+    "homepage": "https://github.com/jirengu/book#readme"
+}
