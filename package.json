@@ -13,7 +13,7 @@
     "devDependencies": {},
     "scripts": {
         "build": "echo \"a\"",
-        "upload": "gitbook build & cd _book & git add . & git commit -am \"ok\" & git push origin master "
+        "upload": "gitbook build && cd _book ; git add . ; git commit -am \"ok\" ; git push origin master  && exit 1"
     },
     "repository": {
         "type": "git",
