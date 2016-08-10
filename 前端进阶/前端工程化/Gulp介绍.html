@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="3.4.2" data-chapter-title="Gulp实战" data-filepath="前端进阶/前端工程化/Gulp介绍.md" data-basepath="../.." data-revision="Wed Aug 10 2016 12:42:23 GMT+0800 (CST)">
+    <div class="book" data-level="3.4.2" data-chapter-title="Gulp实战" data-filepath="前端进阶/前端工程化/Gulp介绍.md" data-basepath="../.." data-revision="Wed Aug 10 2016 12:47:19 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -2111,16 +2111,281 @@
                 
                     <section class="normal" id="section-">
                     
-                        <p>title: title
-date: 2015-01-01
-tags: </p>
+                        <h2 id="gulp&#x5B9E;&#x8DF5;">gulp&#x5B9E;&#x8DF5;</h2>
+<h3 id="gulp-&#x7B80;&#x4ECB;">gulp &#x7B80;&#x4ECB;</h3>
+<p>&#x5730;&#x5740;&#xFF1A; <a href="http://gulpjs.com/" target="_blank">http://gulpjs.com/</a></p>
 <ul>
-<li>tag1</li>
-<li>tag2</li>
+<li>&#x5B83;&#x662F;&#x4E00;&#x6B3E;nodejs&#x5E94;&#x7528;&#x3002;</li>
+<li>&#x5B83;&#x662F;&#x6253;&#x9020;&#x524D;&#x7AEF;&#x5DE5;&#x4F5C;&#x6D41;&#x7684;&#x5229;&#x5668;&#xFF0C;&#x6253;&#x5305;&#x3001;&#x538B;&#x7F29;&#x3001;&#x5408;&#x5E76;&#x3001;git&#x3001;&#x8FDC;&#x7A0B;&#x64CD;&#x4F5C;...&#xFF0C;</li>
+<li>&#x7B80;&#x5355;&#x6613;&#x7528;</li>
+<li>&#x65E0;&#x5FEB;&#x4E0D;&#x7834;</li>
+<li>&#x9AD8;&#x8D28;&#x91CF;&#x7684;&#x63D2;&#x4EF6;</li>
+<li>....</li>
 </ul>
-<hr>
-<h2 id="&#x6807;&#x9898;">&#x6807;&#x9898;</h2>
+<h3 id="gulp-&#x5B89;&#x88C5;&#x53CA;&#x5E38;&#x89C1;&#x95EE;&#x9898;">gulp &#x5B89;&#x88C5;&#x53CA;&#x5E38;&#x89C1;&#x95EE;&#x9898;</h3>
+<h4 id="1-&#x5B89;&#x88C5;gulp">1. &#x5B89;&#x88C5;gulp</h4>
+<pre><code>    npm install -g gulp
+</code></pre><p>&#x5982;&#x679C;&#x62A5;<code>Error: EACCES, open &apos;/Users/xxx/xxx.lock</code>&#x9519;&#x8BEF;&#x3002;&#x5148;&#x6267;&#x884C;&#xFF1A;<code>sudo chown -R $(whoami) $HOME/.npm</code>;</p>
+<p>&#x5982;&#x679C;&#x4F7F;&#x7528;npm&#x5B89;&#x88C5;&#x63D2;&#x4EF6;&#x592A;&#x6162;&#xFF08;&#x88AB;&#x5899;&#xFF09;&#xFF0C;&#x53EF;&#x6267;&#x884C; <code>npm install -g cnpm --registry=https://registry.npm.taobao.org</code>,&#x5148;&#x5B89;&#x88C5;cnpm, &#x4E4B;&#x540E;&#x518D;&#x5B89;&#x88C5;&#x63D2;&#x4EF6;&#x65F6;&#x7528;cnpm&#x5B89;&#x88C5;<code>cnpm install gulp</code></p>
+<h4 id="2-&#x5B89;&#x88C5;&#x5404;&#x79CD;&#x63D2;&#x4EF6;">2. &#x5B89;&#x88C5;&#x5404;&#x79CD;&#x63D2;&#x4EF6;</h4>
+<pre><code>    npm install --save gulp            //&#x672C;&#x5730;&#x4F7F;&#x7528;gulp
+    npm install --save gulp-imagemin   //&#x538B;&#x7F29;&#x56FE;&#x7247;
+    npm install --save gulp-minify-css //&#x538B;&#x7F29;css
+    npm install --save gulp-ruby-sass  //sass
+    npm install --save gulp-jshint     //js&#x4EE3;&#x7801;&#x68C0;&#x6D4B;
+    npm install --save gulp-uglify     //js&#x538B;&#x7F29;
+    npm install --save gulp-concat     //&#x6587;&#x4EF6;&#x5408;&#x5E76;
+    npm install --save gulp-rename     //&#x6587;&#x4EF6;&#x91CD;&#x547D;&#x540D;
+    npm install --save png-sprite      //png&#x5408;&#x5E76;
+    npm install --save gulp-htmlmin    //&#x538B;&#x7F29;html
+    npm install --save gulp-clean      //&#x6E05;&#x7A7A;&#x6587;&#x4EF6;&#x5939;
+    npm install --save browser-sync    //&#x6587;&#x4EF6;&#x4FEE;&#x6539;&#x6D4F;&#x89C8;&#x5668;&#x81EA;&#x52A8;&#x5237;&#x65B0;
+    npm install --save gulp-shell      //&#x6267;&#x884C;shell&#x547D;&#x4EE4;
+    npm install --save gulp-ssh        //&#x64CD;&#x4F5C;&#x8FDC;&#x7A0B;&#x673A;&#x5668;
+    npm install --save run-sequence    //task&#x987A;&#x5E8F;&#x6267;&#x884C;
+</code></pre><p>&#x6216;&#x8005;&#x6839;&#x636E;package.json &#x81EA;&#x52A8;&#x5B89;&#x88C5;&#x3002;&#x628A;package.json&#x62F7;&#x8D1D;&#x5230;&#x81EA;&#x5DF1;&#x7684;&#x5DE5;&#x7A0B;&#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x8FDB;&#x5165;&#x76EE;&#x5F55;&#xFF0C;&#x6267;&#x884C;:<code>npm install</code></p>
+<h3 id="gulp-&#x4F7F;&#x7528;&#x6848;&#x4F8B;">gulp &#x4F7F;&#x7528;&#x6848;&#x4F8B;</h3>
+<p>&#x6240;&#x6709;&#x4EE3;&#x7801;&#x5728;&#xFF1A;<a href="https://coding.net/u/jirengu/p/gulp/git" target="_blank">https://coding.net/u/jirengu/p/gulp/git</a></p>
+<h4 id="&#x8303;&#x4F8B;1">&#x8303;&#x4F8B;1:</h4>
+<p>demo1&#x76EE;&#x5F55;&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#x3002;&#x628A;demo1&#x4E2D;&#x7684; index.html&#x538B;&#x7F29;&#xFF0C;&#x628A;src&#x91CC;&#x9762;&#x7684;less&#x7F16;&#x8BD1;&#x3001;&#x5408;&#x5E76;&#x3001;&#x538B;&#x7F29;&#x3001;&#x91CD;&#x547D;&#x540D;&#x3001;&#x5B58;&#x50A8;&#x5230;dist&#x3002;src&#x91CC;&#x9762;&#x7684;&#x56FE;&#x7247;&#x538B;&#x7F29;&#x3001;&#x5408;&#x5E76;&#x5B58;&#x50A8;&#x5230;dist&#x3002;src&#x91CC;&#x9762;&#x7684;js&#x505A;&#x4EE3;&#x7801;&#x68C0;&#x67E5;&#xFF0C;&#x538B;&#x7F29;&#xFF0C;&#x5408;&#x5E76;&#xFF0C;&#x5B58;&#x50A8;&#x5230;dist&#x3002;</p>
+<pre><code>
+    + demo1
+        + dist
+            + css
+                - merge.min.css
+            + js
+                - merge.min.js
+            + imgs
+                - 1.png
+                - 2.png
+            - index.html
+        + src
+            + css
+                - a.css
+                - b.css
+            + js
+                - a.js
+                - b.js
+            + imgs
+                - 1.png
+                - 2.png
+            - index.html
+</code></pre><p>gulpfile.js</p>
+<pre><code>
+    var gulp = require(&apos;gulp&apos;);
 
+    // &#x5F15;&#x5165;&#x7EC4;&#x4EF6;
+    var minifycss = require(&apos;gulp-minify-css&apos;), // CSS&#x538B;&#x7F29;
+        uglify = require(&apos;gulp-uglify&apos;), // js&#x538B;&#x7F29;
+        concat = require(&apos;gulp-concat&apos;), // &#x5408;&#x5E76;&#x6587;&#x4EF6;
+        rename = require(&apos;gulp-rename&apos;), // &#x91CD;&#x547D;&#x540D;
+        clean = require(&apos;gulp-clean&apos;), //&#x6E05;&#x7A7A;&#x6587;&#x4EF6;&#x5939;
+        minhtml = require(&apos;gulp-htmlmin&apos;), //html&#x538B;&#x7F29;
+        jshint = require(&apos;gulp-jshint&apos;), //js&#x4EE3;&#x7801;&#x89C4;&#x8303;&#x6027;&#x68C0;&#x67E5;
+        imagemin = require(&apos;gulp-imagemin&apos;); //&#x56FE;&#x7247;&#x538B;&#x7F29;
+
+
+    gulp.task(&apos;html&apos;, function() {
+      return gulp.src(&apos;src/*.html&apos;)
+        .pipe(minhtml({collapseWhitespace: true}))
+        .pipe(gulp.dest(&apos;dist&apos;));
+    });
+
+    gulp.task(&apos;css&apos;, function(argument) {
+        gulp.src(&apos;src/css/*.css&apos;)
+            .pipe(concat(&apos;merge.css&apos;))
+            .pipe(rename({
+                suffix: &apos;.min&apos;
+            }))
+            .pipe(minifycss())
+            .pipe(gulp.dest(&apos;dist/css/&apos;));
+    });
+    gulp.task(&apos;js&apos;, function(argument) {
+        gulp.src(&apos;src/js/*.js&apos;)
+            .pipe(jshint())
+            .pipe(jshint.reporter(&apos;default&apos;))
+            .pipe(concat(&apos;merge.js&apos;))
+            .pipe(rename({
+                suffix: &apos;.min&apos;
+            }))
+            .pipe(uglify())
+            .pipe(gulp.dest(&apos;dist/js/&apos;));
+    });
+
+    gulp.task(&apos;img&apos;, function(argument){
+        gulp.src(&apos;src/imgs/*&apos;)
+            .pipe(imagemin())
+            .pipe(gulp.dest(&apos;dist/imgs&apos;));
+    });
+
+    gulp.task(&apos;clear&apos;, function(){
+        gulp.src(&apos;dist/*&apos;,{read: false})
+            .pipe(clean());
+    });
+
+    gulp.task(&apos;build&apos;, [&apos;html&apos;, &apos;css&apos;, &apos;js&apos;, &apos;img&apos;]);
+</code></pre><p>&#x6267;&#x884C;&#xFF1A;</p>
+<pre><code>    gulp build;
+</code></pre><p>&#x53EF;&#x5B9E;&#x73B0;src&#x76EE;&#x5F55;&#x4E0B;&#x7684;html&#x538B;&#x7F29;&#xFF0C;css&#x3001;js&#x5408;&#x5E76;&#x538B;&#x7F29;&#xFF0C;&#x56FE;&#x7247;&#x538B;&#x7F29;&#xFF0C;&#x6700;&#x540E;&#x653E;&#x5165; dist&#x76EE;&#x5F55;&#x4E0B;</p>
+<h4 id="&#x8303;&#x4F8B;2">&#x8303;&#x4F8B;2:</h4>
+<p>&#x76D1;&#x63A7;&#x9879;&#x76EE;&#x6587;&#x4EF6;&#x53D8;&#x52A8;&#xFF0C;&#x81EA;&#x52A8;&#x5237;&#x65B0;&#x6D4F;&#x89C8;&#x5668;&#xFF0C;&#x672C;&#x5730;&#x8C03;&#x8BD5;&#xFF0C; &#x5E76;&#x4E14;&#x628A;&#x672C;&#x5730;&#x4EE3;&#x7801;&#x540C;&#x6B65;&#x5230;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;</p>
+<pre><code>
+
+    var gulp = require(&apos;gulp&apos;);
+
+    // &#x5F15;&#x5165;&#x7EC4;&#x4EF6;
+    var browserSync = require(&apos;browser-sync&apos;).create();   //&#x7528;&#x4E8E;&#x6D4F;&#x89C8;&#x5668;&#x81EA;&#x52A8;&#x5237;&#x65B0;
+    var scp = require(&apos;gulp-scp2&apos;);                       //&#x7528;&#x4E8E;scp&#x5230;&#x8FDC;&#x7A0B;&#x673A;&#x5668;
+    var fs = require(&apos;fs&apos;);             
+
+
+    gulp.task(&apos;reload&apos;, function(){
+        browserSync.reload();
+    });
+
+    gulp.task(&apos;server&apos;, function() {
+        browserSync.init({
+            server: {
+                baseDir: &quot;./src&quot;
+            }
+        });
+
+        gulp.watch([&apos;**/*.css&apos;, &apos;**/*.js&apos;, &apos;**/*.html&apos;], [&apos;reload&apos;, &apos;scp&apos;]);
+    });
+
+
+
+    gulp.task(&apos;scp&apos;, function() {
+        return gulp.src(&apos;src/**/*&apos;)
+            .pipe(scp({
+                host: &apos;121.40.201.213&apos;,
+                username: &apos;root&apos;,
+                privateKey: fs.readFileSync(&apos;/Users/wingo/.ssh/id_rsa&apos;),
+                dest: &apos;/var/www/fe.jirengu.com&apos;,
+                watch: function(client) {
+                    client.on(&apos;write&apos;, function(o) {
+                        console.log(&apos;write %s&apos;, o.destination);
+                    });
+                }
+            }))
+            .on(&apos;error&apos;, function(err) {
+                console.log(err);
+            });
+    });
+</code></pre><p>&#x6267;&#x884C;&#xFF1A;</p>
+<pre><code>    gulp scp;  // &#x53EF;&#x628A;&#x672C;&#x5730;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x4EE3;&#x7801;&#x62F7;&#x8D1D;&#x5230;&#x670D;&#x52A1;&#x5668;
+    gulp server; //&#x53EF;&#x5728;&#x672C;&#x5730;&#x521B;&#x5EFA;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x672C;&#x5730;&#x5F00;&#x53D1;&#x6D4F;&#x89C8;&#x5668;&#x7ACB;&#x523B;&#x5237;&#x65B0;
+</code></pre><h4 id="&#x8303;&#x4F8B;3">&#x8303;&#x4F8B;3:</h4>
+<p>&#x76D1;&#x63A7;&#x9879;&#x76EE;&#x6587;&#x4EF6;&#x53D8;&#x52A8;&#xFF0C;&#x81EA;&#x52A8;&#x538B;&#x7F29;&#x3001;&#x5408;&#x5E76;&#x3001;&#x6253;&#x5305;&#x3001;&#x6DFB;&#x52A0;&#x7248;&#x672C;&#x53F7;</p>
+<pre><code>html
+
+    &lt;/html&gt;
+    &lt;head&gt;
+
+    &lt;!-- build:css css/merge.css --&gt;
+    &lt;link href=&quot;css/a.css&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;link href=&quot;css/b.css&quot; rel=&quot;stylesheet&quot;&gt;
+    &lt;!-- endbuild --&gt;
+
+    &lt;/head&gt;
+    &lt;body&gt;
+
+    &lt;p&gt;demo1-&#x5DE5;&#x7A0B;&#x5316;&#x624B;&#x52A8;&#x7248;&lt;/p&gt;
+
+    &lt;!-- build:js js/merge.js --&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;js/a.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;js/b.js&quot;&gt;&lt;/script&gt;
+    &lt;!-- endbuild --&gt;
+
+    &lt;/body&gt;
+    &lt;/html&gt;
+</code></pre><p>gulpfile.js</p>
+<pre><code>    var gulp = require(&apos;gulp&apos;);    
+    var rev = require(&apos;gulp-rev&apos;);   //&#x6DFB;&#x52A0;&#x7248;&#x672C;&#x53F7;
+    var revReplace = require(&apos;gulp-rev-replace&apos;);  //&#x7248;&#x672C;&#x53F7;&#x66FF;&#x6362;
+    var useref = require(&apos;gulp-useref&apos;);   //&#x89E3;&#x6790;html&#x8D44;&#x6E90;&#x5B9A;&#x4F4D;
+    var filter = require(&apos;gulp-filter&apos;);   //&#x8FC7;&#x6EE4;&#x6570;&#x636E;
+    var uglify = require(&apos;gulp-uglify&apos;);  
+    var csso = require(&apos;gulp-csso&apos;);      //css&#x4F18;&#x5316;&#x538B;&#x7F29;
+    var clean = require(&apos;gulp-clean&apos;);
+
+    gulp.task(&quot;index&quot;, [&apos;clear&apos;], function() {
+      var jsFilter = filter(&quot;**/*.js&quot;, {restore: true});
+      var cssFilter = filter(&quot;**/*.css&quot;, {restore: true});
+
+      var userefAssets = useref.assets();
+
+
+      return gulp.src(&quot;src/index.html&quot;)
+        .pipe(userefAssets)      // Concatenate with gulp-useref
+        .pipe(jsFilter)
+        .pipe(uglify())             // Minify any javascript sources
+        .pipe(jsFilter.restore)
+        .pipe(cssFilter)
+        .pipe(csso())               // Minify any CSS sources
+        .pipe(cssFilter.restore)
+        .pipe(rev())                // Rename the concatenated files
+        .pipe(userefAssets.restore())
+        .pipe(useref())
+        .pipe(revReplace())         // Substitute in new filenames
+        .pipe(gulp.dest(&apos;dist&apos;));
+    });
+
+    gulp.task(&apos;clear&apos;, function(){
+        gulp.src(&apos;dist/*&apos;,{read: false})
+            .pipe(clean());
+    });
+</code></pre><h4 id="&#x8303;&#x4F8B;4">&#x8303;&#x4F8B;4:</h4>
+<p>&#x672C;&#x5730;shell&#x547D;&#x4EE4;&#xFF0C; &#x8FDC;&#x7A0B;shell&#xFF0C; &#x4EFB;&#x52A1;&#x987A;&#x5E8F;&#x6267;&#x884C;...</p>
+<pre><code>
+    var gulp = require(&apos;gulp&apos;);
+
+
+    var shell = require(&apos;gulp-shell&apos;);
+    var runSequence = require(&apos;run-sequence&apos;);
+    var fs = require(&apos;fs&apos;);
+    var GulpSSH = require(&apos;gulp-ssh&apos;);
+
+
+
+    //shell&#x64CD;&#x4F5C;, 
+    gulp.task(&apos;git&apos;, shell.task([&apos;git add .&apos;, &apos;git commit -am &quot;dd&quot;&apos;, &apos;git push -u origin dev&apos;]));
+    gulp.task(&apos;clear&apos;, shell.task([&apos;find . -name &quot;.DS_Store&quot; -depth -exec rm {} \\;&apos;]));
+
+
+
+    //&#x64CD;&#x4F5C;&#x8FDC;&#x7A0B;&#x4E3B;&#x673A;
+    var gulpSSH = new GulpSSH({
+        ignoreErrors: false,
+        sshConfig: {
+            host: &apos;121.40.201.213&apos;,
+            port: 22,
+            username: &apos;root&apos;,
+            privateKey: fs.readFileSync(&apos;/Users/wingo/.ssh/id_rsa&apos;)
+        }
+    });
+
+    gulp.task(&apos;remote&apos;, function() {
+        return gulpSSH
+            .shell([&apos;cd /var/www/fe.jirengu.com&apos;, &apos;git pull origin dev&apos;, &apos;rm -rf _runtime&apos;]);
+    });
+
+
+
+    gulp.task(&apos;build&apos;, function(callback) {
+        runSequence(
+            &apos;git&apos;,
+            &apos;clear&apos;,
+            &apos;remote&apos;,
+            callback
+        );
+    });
+
+
+    gulp.task(&apos;watch&apos;, function() {
+        gulp.watch([&apos;**/*.css&apos;, &apos;**/*.js&apos;, &apos;**/*.html&apos;, &apos;**/*.php&apos;], [&apos;build&apos;]);
+    });
+</code></pre>
                     
                     </section>
                 
