@@ -14,8 +14,9 @@
     "scripts": {
         "build": "gitbook build && exit 0",
         "init" : "npm run build; cd _book; git init; git add .; git commit -am \"init\"; git remote add origin git@github.com:jirengu/book.git && exit 0",
-        "upload": "cd _book ; cp -rf code _book; git add . ; git commit -am \"ok\" ; git push origin master  && exit 0",
-        "start": "npm run build; npm run upload"
+        "upload:_book": "cd _book ; cp -rf code _book; git add . ; git commit -am \"upload\" ; git push origin master  && exit 0",
+        "upload:src": "git add . ; git commit -am \"upload\" ; git push origin master  && exit 0",
+        "start": "npm run build; npm run upload:_book"
     },
     "repository": {
         "type": "git",
