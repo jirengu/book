@@ -1,0 +1,117 @@
+<html>
+<body>
+  <p id="container"></p>
+  <input id="music-name" type="text">
+  <button id="btn">获取</button>
+
+  <textarea id="article" cols="30" rows="10"></textarea>
+  <button id="btn2">提交文章</button>
+
+<script>
+  
+  $('#btn').addEventListener('click', function(){
+
+    var musicName = document.querySelector('#music-name').value;
+    var xhr = new XMLHttpRequest();
+    xhr.open('get', '/getMusic?name=' + musicName, true);
+    xhr.send();
+    xhr.onreadystatechange = function(){
+      if(xhr.readyState === 4 && xhr.status === 200 ){
+        document.querySelector('#container').innerText = xhr.responseText;
+        console.log(xhr.responseText)
+      }
+    }
+    console.log('hello')
+
+  })
+  
+
+  $('#btn2').addEventListener('click', function(){
+    var article = $('#article').value;
+
+    // var xhr = new XMLHttpRequest();
+    // xhr.open('post', '/postArticle', true);
+    // xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+    // xhr.send("article="+article);
+
+    // xhr.onreadystatechange = function(){
+    //   if(xhr.readyState === 4 && xhr.status === 200 ){
+    //     $('#container').innerText = xhr.responseText;
+    //     console.log(xhr.responseText)
+    //   }
+    // }
+
+    ajax({
+      url: '/postArticle',
+      type: 'post',
+      dataType: 'text',
+      data: {
+        article: article
+      },
+      success: function(){
+        $('#container').innerText = xhr.responseText;
+      },
+      error: function(){
+        console.log('error');
+      }
+    })
+
+  })
+
+
+
+
+
+
+function $(id){
+  return document.querySelector(id);
+}
+
+
+
+
+function ajax(opts) {
+    opts.success = opts.success || function() {};
+    opts.error = opts.error || function() {};
+    opts.type = opts.type || 'get';
+    opts.dataType = opts.dataType || 'json';
+    opts.data = opts.data || {};
+    var dataStr = '';
+    for (var key in opts.data) {
+      dataStr += key + '=' + opts.data[key] + '&';
+    }
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+
+      if (xmlhttp.readyState == 4) {
+        if (xmlhttp.status == 200) {
+          //如数据类型是 text, 则不解析
+          if (opts.dataType === 'text') {
+            opts.success(xmlhttp.responseText);
+          }
+          if (opts.dataType === 'json') {
+            var json = JSON.parse(xmlhttp.responseText);
+            opts.success(json);
+          }
+        } else {
+          opts.error();
+        }
+      }
+    };
+
+    dataStr = dataStr.substr(0, dataStr.length - 1);
+
+    if (opts.type.toLowerCase() === 'post') {
+      xmlhttp.open(opts.type, opts.url, true);
+      xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xmlhttp.send(dataStr);
+    }
+    if (opts.type.toLowerCase() === 'get') {
+      xmlhttp.open(opts.type, opts.url + '?' + dataStr, true);
+      xmlhttp.send();
+    }
+  }
+
+</script>
+</body>
+</html>
