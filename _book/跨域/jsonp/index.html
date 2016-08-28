@@ -27,7 +27,7 @@
     var script = document.createElement('script');
     script.src = 'http://a.jrg.com:8080/getNews?callback=appendHtml';
     document.head.appendChild(script);
-    //document.head.removeChild(script);
+    document.head.removeChild(script);
   })
 
   function appendHtml(news){

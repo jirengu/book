@@ -20,37 +20,20 @@
     </ul>
     <button class="change">换一组</button>
   </div>
-  
-<script>
-  
-  $('.change').addEventListener('click', function(){
 
-    var xhr = new XMLHttpRequest();
-    xhr.open('get', 'http://a.jrg.com:8080/getNews', true);
-    xhr.send();
-    xhr.onreadystatechange = function(){
-      if(xhr.readyState === 4 && xhr.status === 200){
-        appendHtml( JSON.parse(xhr.responseText) )
-      }
-    }
+  <script src="http://b.jrg.com:8080/a.txt"></script>
+  <script src="http://b.jrg.com:8080/getNews"></script>
 
-  })
 
-  function appendHtml(news){
-    var html = '';
-    for( var i=0; i<news.length; i++){
-      html += '<li>' + news[i] + '</li>';
-    }
-    console.log(html);
-    $('.news').innerHTML = html;
+  <script>
 
+  function doSomething(data){
+    console.log(data);
   }
 
 
-  function $(id){
-    return document.querySelector(id);
-  }
-</script>
+  </script>
+
 
 
 

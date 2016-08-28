@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="1.5.6" data-chapter-title="动画" data-filepath="前端基础/JQuery/动画.md" data-basepath="../.." data-revision="Thu Aug 18 2016 17:29:45 GMT+0800 (CST)">
+    <div class="book" data-level="1.5.6" data-chapter-title="动画" data-filepath="前端基础/JQuery/动画.md" data-basepath="../.." data-revision="Sun Aug 28 2016 18:56:05 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -2112,6 +2112,66 @@ alert(&apos;Animation complete.&apos;);
 }, function() {
   $(this).find(&apos;img&apos;).stop(true, true).fadeIn();
 });
+</code></pre><pre><code>
+
+
+    &lt;button id=&quot;btn14&quot;&gt;&#x53D8;&#x5BBD;&lt;/button&gt;
+    &lt;button id=&quot;btn15&quot;&gt;&#x590D;&#x539F;&lt;/button&gt;
+    &lt;button id=&quot;btn16&quot;&gt;&#x53D8;&#x5BBD;&#x53D8;&#x5927;&#x79FB;&#x52A8;&lt;/button&gt;
+    &lt;button id=&quot;btn17&quot;&gt;&#x591A;&#x4E2A;&#x52A8;&#x753B;&lt;/button&gt;
+    &lt;button id=&quot;btn18&quot;&gt;&lt;/button&gt;
+
+    &lt;div class=&quot;div3&quot; style=&quot;width:80px;height:80px;background-color:red;position:relative;&quot;&gt;&lt;/div&gt;
+
+  &lt;script type=&quot;text/javascript&quot;&gt;
+    $(function(){
+        var $div3 = $(&quot;.div3&quot;);
+        $(&quot;#btn14&quot;).on(&apos;click&apos;, function(e){
+            $div3.animate({width: &apos;200px&apos;});
+        });
+        $(&quot;#btn15&quot;).on(&apos;click&apos;, function(){
+            $div3.animate({
+                width:&apos;80px&apos;,
+                height: &apos;80px&apos;,
+                left: &apos;0px&apos;,
+                top: &apos;0px&apos;,
+                opacity: 1
+            }, 500);
+        });
+        $(&quot;#btn16&quot;).on(&apos;click&apos;, function(){
+            $div3.animate({
+                width:&apos;150px&apos;,
+                height: &apos;150px&apos;,
+                left: &apos;100px&apos;,
+                top: &apos;100px&apos;,
+                opacity: 0
+            }, 500, function(){
+
+            });
+        });
+
+        var clickable = true;
+        $(&quot;#btn17&quot;).on(&apos;click&apos;, function(){
+            // if(!clickable){
+            //   return;
+            // }
+            //clickable = false;
+            //$div3.finish()
+            $div3.stop(true, true);
+            $div3.css({width: 80, height: 80, left: 0, top: 0});
+            $div3.stop(true, true);
+            $div3.animate({width:&apos;150&apos;,height:&apos;150px&apos;}).animate({left:&apos;200px&apos;})
+                 .animate({top:&apos;200px&apos;});
+
+            $div3.animate({left:&apos;0px&apos;});
+            $div3.animate({top:&apos;0px&apos;});
+            $div3.animate({width:&apos;80px&apos;,height:&apos;80px&apos;}, function(){
+              clickable = true;
+            });
+        });
+
+    });
+    &lt;/script&gt;
 </code></pre><h2 id="&#x53C2;&#x8003;">&#x53C2;&#x8003;</h2>
 <p><a href="http://www.css88.com/jqapi-1.9/" target="_blank">jQuery &#x4E2D;&#x6587;API</a></p>
 

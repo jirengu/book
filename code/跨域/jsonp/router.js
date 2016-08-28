@@ -18,7 +18,14 @@ app.get('/getNews', function(req, res){
 		data.push(news[index]);
 		news.splice(index, 1);
 	}
-	var cb = req.query.callback;
 
-	res.send(cb + '('+ JSON.stringify(data) + ')');
+
+	var cb = req.query.callback;
+	if(cb){
+		res.send(cb + '('+ JSON.stringify(data) + ')');
+	}else{
+		res.send(data);
+	}
+
+	
 })
