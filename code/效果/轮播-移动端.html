@@ -28,7 +28,6 @@
         
         .carousel {
             position: relative;
-            width: 310px;
             height: 206px;
             overflow: hidden;
         }
@@ -38,7 +37,7 @@
         }
         
         .carousel .img-ct img {
-            width: 310px;
+            width: 100vw;
             height: 206px;
         }
         
@@ -79,23 +78,24 @@
             right: 10px;
         }
         
-        ul.bullet {
+        .bullet {
             position: absolute;
             bottom: 10px;
             left: 50%;
             transform: translateX(-50%);
         }
         
-        ul.bullet li {
-            width: 16px;
-            height: 4px;
-            border-radius: 2px;
+        .bullet li {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
             background: #fff;
             display: inline-block;
             cursor: pointer;
+            margin: 0 2px;
         }
         
-        ul.bullet li.active {
+        .bullet .active {
             background: #666;
         }
     </style>
@@ -117,15 +117,16 @@
                 <a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/5.jpg"></a>
             </li>
         </ul>
-        <a class="pre arrow" href="#">
-            <</a>
-                <a class="next arrow" href="#">></a>
-                <ul class="bullet">
-                    <li class="active"></li>
-                    <li></li>
-                    <li></li>
-                    <li></li>
-                </ul>
+        <!--
+        <a class="pre arrow" href="#"><</a>
+        <a class="next arrow" href="#">></a>
+        -->
+        <ul class="bullet">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
     </div>
 
 
@@ -149,14 +150,25 @@
             width: imgRealCount * imgWidth
         })
 
-        var hammertime = new Hammer($ct[0]);
-        hammertime.on('swiperight', function(ev) {
+        var hammerCt = new Hammer($ct[0]);
+        hammerCt.on('swiperight', function(ev) {
             playPre()
         });
-        hammertime.on('swipeleft', function(ev) {
+        hammerCt.on('swipeleft', function(ev) {
             playNext()
         });
+        var hammerBullet = new Hammer($bullet[0])
+        hammerBullet.on('tap', function(e) {
+            if(e.target.tagName.toLowerCase() !== 'li') return;
 
+            var idx = $(e.target).index();
+            console.log(idx)
+            if (idx > curIdx) {
+                playNext(idx - curIdx);
+            } else if (idx < curIdx) {
+                playPre(curIdx - idx);
+            }
+        });
 
         var curIdx = 0;
         var isAnimate = false;
