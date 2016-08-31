@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="http://cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/hammer.js/2.0.8/hammer.min.js"></script>
+    <meta name="description" content="移动端轮播" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1, maximum-scale=1">
+    <title>移动端轮播</title>
+    <style type="text/css">
+        html,
+        body,
+        ul,
+        li,
+        p {
+            margin: 0;
+            padding: 0;
+        }
+        
+        li {
+            list-style: none;
+        }
+        
+        a {
+            text-decoration: none;
+        }
+        
+        .carousel {
+            position: relative;
+            height: 206px;
+            overflow: hidden;
+        }
+        
+        .carousel .img-ct {
+            position: absolute;
+        }
+        
+        .carousel .img-ct img {
+            width: 100vw;
+            height: 206px;
+        }
+        
+        .carousel .img-ct:after {
+            content: ' ';
+            display: block;
+            clear: both;
+        }
+        
+        .carousel .img-ct li {
+            float: left;
+        }
+        
+        .arrow {
+            position: absolute;
+            top: 50%;
+            margin-top: -15px;
+            width: 30px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            background: #4E443C;
+            color: #fff;
+            border-radius: 30px;
+            box-shadow: 0 0 2px #999;
+            opacity: 0.8
+        }
+        
+        .arrow:hover {
+            opacity: 1;
+        }
+        
+        .pre {
+            left: 10px;
+        }
+        
+        .next {
+            right: 10px;
+        }
+        
+        .bullet {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .bullet li {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #fff;
+            display: inline-block;
+            cursor: pointer;
+            margin: 0 2px;
+        }
+        
+        .bullet .active {
+            background: #666;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="carousel">
+        <ul class="img-ct">
+            <li data-id=0>
+                <a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/2.jpg"></a>
+            </li>
+            <li data-id=1>
+                <a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/3.jpg"></a>
+            </li>
+            <li data-id=2>
+                <a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/4.jpg"></a>
+            </li>
+            <li data-id=3>
+                <a href="#"><img src="http://cdn.jirengu.com/book.jirengu.com/img/5.jpg"></a>
+            </li>
+        </ul>
+        <!--
+        <a class="pre arrow" href="#"><</a>
+        <a class="next arrow" href="#">></a>
+        -->
+        <ul class="bullet">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+
+
+
+    <script type="text/javascript">
+        //$(function(){
+
+        var $ct = $('.img-ct'),
+            $items = $ct.children(),
+            // $pre = $('.pre'),
+            // $next = $('.next'),
+            $bullet = $('.bullet'),
+            imgWidth = $items.width(),
+            imgCount = $ct.children().length;
+
+        $ct.prepend($items.last().clone());
+        $ct.append($items.first().clone());
+        imgRealCount = $ct.children().length;
+        $ct.css({
+            left: 0 - imgWidth,
+            width: imgRealCount * imgWidth
+        })
+
+        var hammerCt = new Hammer($ct[0]);
+        hammerCt.on('swiperight', function(ev) {
+            playPre()
+        });
+        hammerCt.on('swipeleft', function(ev) {
+            playNext()
+        });
+        var hammerBullet = new Hammer($bullet[0])
+        hammerBullet.on('tap', function(e) {
+            if(e.target.tagName.toLowerCase() !== 'li') return;
+
+            var idx = $(e.target).index();
+            console.log(idx)
+            if (idx > curIdx) {
+                playNext(idx - curIdx);
+            } else if (idx < curIdx) {
+                playPre(curIdx - idx);
+            }
+        });
+
+        var curIdx = 0;
+        var isAnimate = false;
+
+
+        /*
+
+        $next.on('click', function() {
+            playNext();
+        });
+        $pre.on('click', function() {
+            playPre();
+        });
+        $bullet.find('li').on('click', function() {
+            var idx = $(this).index();
+            if (idx > curIdx) {
+                playNext(idx - curIdx);
+            } else if (idx < curIdx) {
+                playPre(curIdx - idx);
+            }
+        });
+        */
+
+        //autoPlay();
+
+        function stopAuto() {
+            clearInterval(clock);
+        }
+
+        function autoPlay() {
+            clock = setInterval(function() {
+                playPre();
+            }, 3000);
+        }
+
+
+        function playNext(idx) {
+            var idx = idx || 1;
+            if (!isAnimate) {
+                isAnimate = true;
+                $ct.animate({
+                    left: '-=' + (imgWidth * idx)
+                }, function() {
+                    // curIdx = (curIdx + idx)%imgCount;
+                    // if(curIdx === 0){
+                    // 	$ct.css({left: 0-imgWidth});;
+                    // }
+                    curIdx++;
+                    if (curIdx === imgCount) {
+                        $ct.css({
+                            left: 0 - imgWidth
+                        });;
+                        curIdx = 0;
+                    }
+                    isAnimate = false;
+                    setBullet();
+                });
+            }
+        }
+
+
+
+
+        function playPre(idx) {
+            var idx = idx || 1;
+            if (!isAnimate) {
+                isAnimate = true;
+                $ct.animate({
+                    left: '+=' + (imgWidth * idx)
+                }, function() {
+                    curIdx = (imgCount + curIdx - idx) % imgCount;
+                    if (curIdx === (imgCount - 1)) {
+                        $ct.css({
+                            left: 0 - imgWidth * imgCount
+                        });;
+                    }
+                    isAnimate = false;
+                    setBullet();
+                });
+            }
+        }
+
+        function setBullet() {
+            $bullet.find('li').removeClass('active')
+                .eq(curIdx).addClass('active');
+        }
+
+        /**
+         * 存在的问题：
+         * 1. 变量可能会重名
+         * 2. 无法复用（页面上有多个轮播）
+         */
+
+
+        //});
+    </script>
+</body>
+
+</html>
