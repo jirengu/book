@@ -1,0 +1,38 @@
+<!doctype>
+<html>
+	<head>
+		<title>change url without refresh browser</title>
+	</head>
+	<body>
+		<input class="btn" type="button" value="Page1.html#1" />
+		<input class="btn" type="button" value="Page2.html#2" />
+		<input class="btn" type="button" value="Page3.html#3" />
+		<script>
+		document.querySelectorAll('.btn').forEach(function(btn){
+			btn.onclick = function(){
+				console.log(this)
+				changeUrl(this.value, this.value)
+			}
+		})
+
+
+		function changeUrl(title, url) {
+			console.log(title, url)
+		    if (typeof (history.pushState) != "undefined") {
+		        var obj = { Title: title, Url: url };
+		        history.replaceState(obj, obj.Title, obj.Url);
+		    } else {
+		        alert("Browser does not support HTML5.");
+		    }
+		}
+
+		window.onpopstate = function(){
+			console.log(window.history.state);
+		}
+		window.onhashchange = function(){
+			console.log(window.history.state)
+		}
+
+		</script>
+	</body>
+</html>
