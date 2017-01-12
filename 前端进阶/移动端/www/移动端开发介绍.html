@@ -4,7 +4,7 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>移动端开发介绍</title>
+		<title>移动端开发介绍--- 饥人谷</title>
 
 		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
 		<meta name="author" content="Hakim El Hattab, jirengu">
@@ -15,7 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="http://cdn.jirengu.com/ppt-cli/css/reveal.css">
-		<link rel="stylesheet" href="http://cdn.jirengu.com/ppt-cli/css/theme/black.css" id="theme">
+		<link rel="stylesheet" href="http://cdn.jirengu.com/ppt-cli/css/theme/jirengu.css" id="theme">
 		
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="http://cdn.jirengu.com/ppt-cli/css/zenburn.css">
@@ -31,19 +31,19 @@
 
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides align-center">
-			 <section><h1>&#x79FB;&#x52A8;&#x7AEF;&#x5F00;&#x53D1;&#x4ECB;&#x7ECD;</h1>
-</section><section class="down"><section class="h2"><h2>&#x79FB;&#x52A8;&#x7AEF;&#x5206;&#x7C7B;</h2>
-</section><section class="h3"><h3>Native</h3>
+			<section data-tag="h1"><h1>&#x79FB;&#x52A8;&#x7AEF;&#x5F00;&#x53D1;&#x4ECB;&#x7ECD;</h1>
+</section><section data-tag="down"><section data-tag="h2"><h2>&#x79FB;&#x52A8;&#x7AEF;&#x5206;&#x7C7B;</h2>
+</section><section data-tag="h3"><h3>Native</h3>
 <p>&#x539F;&#x751F; APP</p>
 <p>&#x4F7F;&#x7528; Java/Objective-C/Swift &#x5F00;&#x53D1;</p>
-</section><section class="h3"><h3>Webapp</h3>
+</section><section data-tag="h3"><h3>Webapp</h3>
 <p>&#x5728;&#x624B;&#x673A;&#x6D4F;&#x89C8;&#x5668;&#x4E0A;&#x5C55;&#x793A;&#x7684;&#x7F51;&#x9875;</p>
-</section><section class="h3"><h3>Hybird</h3>
+</section><section data-tag="h3"><h3>Hybird</h3>
 <p>&#x6DF7;&#x5408;&#x5E94;&#x7528;</p>
 <p>Native + Html</p>
-</section><section class="h3"><h3>&#x5C0F;&#x7A0B;&#x5E8F;</h3>
+</section><section data-tag="h3"><h3>&#x5C0F;&#x7A0B;&#x5E8F;</h3>
 <p>https://www.zhihu.com/topic/20061410/hot</p>
-</section><section class="h3"><h3>&#x6BD4;&#x8F83;</h3>
+</section><section data-tag="h3"><h3>&#x6BD4;&#x8F83;</h3>
 <ul>
 <li>&#x5F00;&#x53D1;&#x6210;&#x672C;</li>
 <li>&#x66F4;&#x65B0;</li>
@@ -51,12 +51,12 @@
 <li>&#x5B89;&#x88C5;&#x65B9;&#x5F0F;</li>
 <li>&#x8DE8;&#x5E73;&#x53F0;</li>
 </ul>
-</section></section><section class="down"><section class="h2"><h2>&#x79FB;&#x52A8; VS PC</h2>
-</section><section class="h3"><h3>PC &#x7AEF;</h3>
+</section></section><section data-tag="down"><section data-tag="h2"><h2>&#x79FB;&#x52A8; VS PC</h2>
+</section><section data-tag="h3"><h3>PC &#x7AEF;</h3>
 <p><img src="http://7xpvnv.com2.z0.glb.qiniucdn.com/8b5e58b5-7461-45ee-b4a7-2d486e386484.png" alt=""></p>
-</section><section class="h3"><h3>&#x79FB;&#x52A8;&#x7AEF;</h3>
+</section><section data-tag="h3"><h3>&#x79FB;&#x52A8;&#x7AEF;</h3>
 <p><img src="http://7xpvnv.com2.z0.glb.qiniucdn.com/30838513-3bbc-4951-bf21-893f3c4349aa.png" alt=""></p>
-</section></section><section class="down"><section class="h2"><h2>&#x624B;&#x52BF;</h2>
+</section></section><section data-tag="down"><section data-tag="h2"><h2>&#x624B;&#x52BF;</h2>
 <p>click, touchstart, touchend, touchmove</p>
 <pre><code>node.addEventListener(&apos;touchstart&apos;, function(){
   console.log(&apos;start touch&apos;)
@@ -65,31 +65,31 @@ node.addEventListener(&apos;touchend&apos;, function(){
   console.log(&apos;&apos;)
 })
 </code></pre>
-</section><section class="h3"><h3>300ms delay</h3>
+</section><section data-tag="h3"><h3>300ms delay</h3>
 <p><a href="http://js.jirengu.com/pire/5/edit">jsbin</a></p>
 <blockquote>
 <p><a href="https://github.com/ftlabs/fastclick">fastclick</a>
 <a href="http://thx.github.io/mobile/300ms-click-delay">300ms &#x5EF6;&#x65F6;&#x7684;&#x539F;&#x56E0;</a></p>
 </blockquote>
-</section><section class="h3"><h3>&#x5E38;&#x89C1;&#x624B;&#x52BF;</h3>
+</section><section data-tag="h3"><h3>&#x5E38;&#x89C1;&#x624B;&#x52BF;</h3>
 <p><img src="http://junmer.github.io/mobile-dev-get-started/img/gesture.jpg" alt=""></p>
-</section><section class="h3"><h3></h3>
+</section><section data-tag="h3"><h3></h3>
 <blockquote>
 <p><a href="http://hammerjs.github.io/">hammerjs</a> &#x4E00;&#x4E2A;&#x624B;&#x52BF;&#x5E93;</p>
 </blockquote>
-</section></section><section class="h2"><h2>&#x6EDA;&#x52A8;</h2>
+</section></section><section data-tag="h2"><h2>&#x6EDA;&#x52A8;</h2>
 <blockquote>
 <p><a href="http://iscrolljs.com/">iscroll</a></p>
 </blockquote>
-</section><section class="down"><section class="h2"><h2>&#x9875;&#x9762;&#x9002;&#x914D;</h2>
+</section><section data-tag="down"><section data-tag="h2"><h2>&#x9875;&#x9762;&#x9002;&#x914D;</h2>
 <pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, height=device-height, inital-scale=1.0, maximum-scale=1.0, user-scalable=no;&quot; /&gt;
 </code></pre>
-</section><section class="h3"><h3>&#x52A8;&#x6001; rem</h3>
-</section><section class="h3"><h3>&#x5A92;&#x4F53;&#x67E5;&#x8BE2;</h3>
-</section></section><section class="h2"><h2>&#x5F00;&#x53D1;&#x8C03;&#x8BD5;</h2>
+</section><section data-tag="h3"><h3>&#x52A8;&#x6001; rem</h3>
+</section><section data-tag="h3"><h3>&#x5A92;&#x4F53;&#x67E5;&#x8BE2;</h3>
+</section></section><section data-tag="h2"><h2>&#x5F00;&#x53D1;&#x8C03;&#x8BD5;</h2>
 <pre><code>npm install browser-sync
 </code></pre>
-</section><section class="h2"><h2>&#x5E38;&#x89C1;&#x5E93;</h2>
+</section><section data-tag="h2"><h2>&#x5E38;&#x89C1;&#x5E93;</h2>
 <ul>
 <li>zepto</li>
 <li>jquery</li>
@@ -97,7 +97,7 @@ node.addEventListener(&apos;touchend&apos;, function(){
 <li>iscroll</li>
 <li>fastclick</li>
 </ul>
-</section><section class="h2"><h2>&#x6536;&#x96C6;</h2>
+</section><section data-tag="h2"><h2>&#x6536;&#x96C6;</h2>
 <p>https://github.com/jtyjty99999/mobileTech/blob/master/README.md</p>
 </section>
 			</div>
