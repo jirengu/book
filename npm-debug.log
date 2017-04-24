@@ -7,7 +7,7 @@
 6 silly lifecycle book.jirengu.com-fe.com@1.0.0~prestart: no script for prestart, continuing
 7 info lifecycle book.jirengu.com-fe.com@1.0.0~start: book.jirengu.com-fe.com@1.0.0
 8 verbose lifecycle book.jirengu.com-fe.com@1.0.0~start: unsafe-perm in lifecycle true
-9 verbose lifecycle book.jirengu.com-fe.com@1.0.0~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/wingo/Desktop/workspace/git/kejian-zuoye-xiangmu/book.jirengu.com-fe.com/node_modules/.bin:/usr/local/bin:/Users/wingo/.composer/vendor/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin
+9 verbose lifecycle book.jirengu.com-fe.com@1.0.0~start: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/wingo/Desktop/workspace/git/kejian-zuoye-xiangmu/book.jirengu.com-fe.com/node_modules/.bin:/usr/local/bin:/Users/wingo/.composer/vendor/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/git/bin:/Users/wingo/.rvm/bin
 10 verbose lifecycle book.jirengu.com-fe.com@1.0.0~start: CWD: /Users/wingo/Desktop/workspace/git/kejian-zuoye-xiangmu/book.jirengu.com-fe.com
 11 silly lifecycle book.jirengu.com-fe.com@1.0.0~start: Args: [ '-c',
 11 silly lifecycle   'npm run build; npm run upload:_book; npm run upload:src' ]
