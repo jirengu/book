@@ -48,7 +48,7 @@
     <body>
         
         
-    <div class="book" data-level="1.4.17" data-chapter-title="事件" data-filepath="前端基础/Javascript/event.md" data-basepath="../.." data-revision="Mon Apr 24 2017 11:12:37 GMT+0800 (CST)">
+    <div class="book" data-level="1.4.17" data-chapter-title="事件" data-filepath="前端基础/Javascript/event.md" data-basepath="../.." data-revision="Mon May 08 2017 17:30:21 GMT+0800 (CST)">
     
 
 <div class="book-summary">
@@ -2388,7 +2388,7 @@
 <pre><code>document.getElementsByTagName(&apos;a&apos;).onclick = function (e) {
     e.preventDefault();
 }
-</code></pre><p><code>stopPaopagation()</code>&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x505C;&#x6B62;&#x4E8B;&#x4EF6;&#x5728;DOM&#x5C42;&#x6B21;&#x7684;&#x4F20;&#x64AD;&#xFF0C;&#x5373;&#x53D6;&#x6D88;&#x8FDB;&#x4E00;&#x6B65;&#x7684;&#x4E8B;&#x4EF6;&#x6355;&#x83B7;&#x6216;&#x5192;&#x6CE1;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;button&#x7684;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x7A0B;&#x5E8F;&#x4E2D;&#x8C03;&#x7528;stopPropagation()&#x4ECE;&#x800C;&#x907F;&#x514D;&#x6CE8;&#x518C;&#x5728;body&#x4E0A;&#x7684;&#x4E8B;&#x4EF6;&#x53D1;&#x751F;</p>
+</code></pre><p><code>stopPropagation()</code>&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x505C;&#x6B62;&#x4E8B;&#x4EF6;&#x5728;DOM&#x5C42;&#x6B21;&#x7684;&#x4F20;&#x64AD;&#xFF0C;&#x5373;&#x53D6;&#x6D88;&#x8FDB;&#x4E00;&#x6B65;&#x7684;&#x4E8B;&#x4EF6;&#x6355;&#x83B7;&#x6216;&#x5192;&#x6CE1;&#x3002;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;button&#x7684;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#x7A0B;&#x5E8F;&#x4E2D;&#x8C03;&#x7528;stopPropagation()&#x4ECE;&#x800C;&#x907F;&#x514D;&#x6CE8;&#x518C;&#x5728;body&#x4E0A;&#x7684;&#x4E8B;&#x4EF6;&#x53D1;&#x751F;</p>
 <pre><code>var handler = function (e) {
     alert(e.type);
     e.stopPropagation();
